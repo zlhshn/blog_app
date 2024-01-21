@@ -2,27 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* @layer base {
+  html,
+  body {
+    @apply dark:bg-dark
+  }
+} */
 @layer components {
+  .custom-shape-divider-top-1705786918 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+  }
 
-    .custom-shape-divider-top-1705786918 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-        transform: rotate(180deg);
-    }
-    
-    .custom-shape-divider-top-1705786918 svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 405px;
-    }
-    
-    .custom-shape-divider-top-1705786918 .shape-fill {
-        fill: #c0dbd4;
-    }
+  .custom-shape-divider-top-1705786918 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 405px;
+  }
+
+  .custom-shape-divider-top-1705786918 .shape-fill {
+    fill: #c0dbd4;
+  }
 }

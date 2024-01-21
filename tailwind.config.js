@@ -8,6 +8,7 @@ module.exports = {
         secondary: "#65C3AF",
         main: "#00323B",
         white: "#fff",
+        dark: "#526D82",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
@@ -21,4 +22,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: "class",
 };
