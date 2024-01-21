@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {
+@layer base {
   html,
   body {
     @apply dark:bg-dark
   }
-} */
+}
 @layer components {
   .custom-shape-divider-top-1705786918 {
     position: absolute;
