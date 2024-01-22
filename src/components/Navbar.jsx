@@ -5,27 +5,33 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/image/logo1.png";
 import { NavLink } from "react-router-dom";
 import Switch from "./Switch";
-import Avatar from "../assets/icons/avatar.png"
+import Avatar from "../assets/icons/avatar.png";
+import { useSelector } from "react-redux";
+import useAuthCalls from "../service/useAuthCalls";
 
-
-const navigation = [
-  { name: "Home", to: "/",current: false },
-  { name: "NewBlog", to: "/newblog", current: false },
-  { name: "About", to: "/about", current: false },
-];
-
-const profileMenu = [
-  { name: "My Blogs", to: "/myblog", current: false },
-  { name: "Profile", to: "/profile", current: false },
-  { name: "Logout", to: "/about", current: false },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Example() {
- const   currentUser = true
+  const { user ,image} = useSelector((state) => state.auth);
+  const {logout}=useAuthCalls()
+
+
+  const navigation = [
+    { name: "Home", to: "/", current: false },
+    { name: "NewBlog", to: "/newblog", current: false },
+    { name: "About", to: "/about", current: false },
+  ];
+  
+  const profileMenu = [
+    { name: `${user}'s Blog`, to: "/myblog", current: false },
+    { name: "Profile", to: "/profile", current: false },
+    { name: "Logout", current: false ,onclick:logout},
+  ];
+  
+
   return (
     <Disclosure as="nav" className=" bg-main dark:bg-gray-900 ">
       {({ open }) => (
@@ -59,14 +65,16 @@ export default function Example() {
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
-                        {item.name} 
+                        {item.name}
                       </NavLink>
                     ))}
                   </div>
                 </div>
                 <div className="flex   items-center ">
                   {" "}
-                  <span className="text-white font-dancing hidden sm:block">DeerBlog</span>
+                  <span className="text-white font-dancing hidden sm:block">
+                    DeerBlog
+                  </span>
                   <img className="w-[100px]" src={logo} alt="Your Company" />
                 </div>
 
@@ -81,7 +89,7 @@ export default function Example() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={Avatar}
+                          src={image || Avatar}
                           alt=""
                         />
                       </Menu.Button>
@@ -96,13 +104,14 @@ export default function Example() {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className=" absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none">
-                        {currentUser ? (
+                        {user ? (
                           profileMenu.map((item) => (
                             <Menu.Item>
                               {({ active }) => (
                                 <NavLink
                                   key={item.name}
-                                  to={item.to}
+                                  to={item.to || ""}
+                                  onClick={() => item.onclick() || ""}
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700"

@@ -18,8 +18,8 @@ const Home = () => {
         <div className="col-span-2 p-2">
           <div className="relative bg-[#F2E3D5]">
             <label htmlFor="Search" className="sr-only">
-              {" "}
-              Search{" "}
+          
+              Search
             </label>
 
             <input
@@ -49,7 +49,7 @@ const Home = () => {
                     d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                   />
                 </svg>
-                <searchIcon />
+        
               </button>
             </span>
           </div>
@@ -89,8 +89,8 @@ const Home = () => {
         <div className="col-span-3 bg-[#F2E3D5] p-2 mt-2">
           <h3 className="mx-3">NEWS</h3>
           <div className="grid grid-cols-12 gap-2">
-            {[1, 2, 3, 4].map((item) => (
-              <NewsCard />
+            {[1, 2, 3, 4].map((item,i) => (
+              <NewsCard key={i} />
             ))}
           </div>
         </div>

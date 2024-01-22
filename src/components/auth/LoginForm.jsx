@@ -68,7 +68,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="block w-full rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 "
             />
             {touched.password && errors.password && (
               <span className=" text-red-500 text-sm pt-1 ">
@@ -81,7 +81,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
         <div>
           <button
             type="submit"
-            className="flex w-full justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary hover:text-main focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="flex w-full justify-center rounded-md bg-main px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary hover:text-main focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary mt-3"
           >
             Sign in
           </button>

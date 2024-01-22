@@ -2,9 +2,10 @@ import React from "react";
 import loginImg from "../assets/image/deer1.png";
 import useAuthCalls from "../service/useAuthCalls";
 
-import { Form, Formik } from "formik";
+import {Formik } from "formik";
 import LoginForm from "../components/auth/LoginForm";
 import { loginSchema } from "../components/auth/LoginForm";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const { login } = useAuthCalls();
@@ -41,12 +42,12 @@ export default function Login() {
               
               <p className="mt-10 text-center text-md text-gray-500">
                 Not a member?
-                <a
-                  href="#"
+                <Link
+                  to={"/register"}
                   className="font-semibold leading-6 mx-1  hover:text-main"
                 >
                   SIGN UP
-                </a>
+                </Link>
               </p>
             </div>
           </div>

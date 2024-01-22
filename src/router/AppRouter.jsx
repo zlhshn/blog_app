@@ -9,6 +9,7 @@ import Dashboard from "../pages/Dashboard";
 import MyBlog from "../pages/MyBlog";
 import Profile from "../pages/Profile";
 import ScrollToTop from "../components/ScroolToTop";
+import Detail from "../pages/Detail";
 
 const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ const AppRouter = () => {
           <Route index element={<Home />} />
           <Route path="newblog" element={<NewBlog />} />
           <Route path="about" element={<About />} />
+          <Route path="detail/:id" element={<Detail />} />
           <Route path="" element={<PrivateRouter />}>
             <Route path="profile" element={<Profile />} />
             <Route path="myblog" element={<MyBlog />} />

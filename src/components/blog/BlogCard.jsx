@@ -1,8 +1,18 @@
 import React from "react";
 import { CommentIcon, EyeIcon, LikeIcon } from "../../assets/icons/icons";
+import { useSelector } from "react-redux";
+import useBlogCalls from "../../service/useBlogCalls";
+import { useNavigate } from "react-router-dom";
 
 const BlogCard = ({ blog }) => {
-  const { title, content, _id, image, createdAt } = blog;
+  const navigate = useNavigate()
+  const { title, content, _id, image, createdAt,likes,comments,countOfVisitors
+   
+
+  } = blog;
+ 
+  const {user} = useSelector((state)=>state.auth)
+  const {likeOrUnlike}=useBlogCalls()
   return (
     <>
       <div className="col-span-12 p-2 bg-white ">
@@ -29,20 +39,22 @@ const BlogCard = ({ blog }) => {
             </p>
             <div className="flex justify-between items-center">
               <div className="flex justify-between items-center gap-2">
-                <p className="flex">
+              <p className="flex cursor-pointer"  onClick={() => user ? likeOrUnlike(_id) : navigate('/login')}>
                   <LikeIcon />
-                  <span>2</span>
+                  <span>{likes.length}</span>
                 </p>
                 <p className="flex">
                   <CommentIcon />
-                  <span>3</span>
+                  <span>{comments.length}</span>
                 </p>
                 <p className="flex">
                   <EyeIcon />
-                  <span>1</span>
+                  <span>{countOfVisitors
+.length}</span>
                 </p>
               </div>
-              <button className="bg-red-400 rounded-md text-white px-3 py-2 button">
+              <button className="bg-red-400 rounded-md text-white px-3 py-2 button "
+               onClick={() => navigate(`/detail/${_id}`)}>
                 Read More
               </button>
             </div>

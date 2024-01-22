@@ -18,6 +18,9 @@ const blogSlice = createSlice({
       state.blogs = payload;
       state.loading = false;
     },
+    getLikeSucces:(state)=>{
+      state.loading = false;
+    },
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;
@@ -25,6 +28,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { fetchStart, getBlogSuccess, fetchFail } = blogSlice.actions;
+export const { fetchStart, getBlogSuccess,getLikeSucces, fetchFail } = blogSlice.actions;
 
 export default blogSlice.reducer;
