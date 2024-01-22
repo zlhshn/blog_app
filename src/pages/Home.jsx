@@ -1,7 +1,17 @@
+import { useSelector } from "react-redux";
 import BlogCard from "../components/BlogCard";
 import NewsCard from "../components/NewsCard";
+import useBlogCalls from "../service/useBlogCalls";
+import { useEffect } from "react";
 
 const Home = () => {
+  const { blogs } = useSelector((state) => state.blog);
+  const { getBlog } = useBlogCalls();
+
+  useEffect(() => {
+    getBlog("blogs?page=1");
+  }, []);
+
   return (
     <div className="mx-[5rem]">
       <div className="grid grid-cols-12 gap-2">
@@ -71,7 +81,9 @@ const Home = () => {
 
         <div className="col-span-7 bg-[#F2E3D5] p-2 mt-2">
           <div className="grid grid-cols-12 gap-2">
-            <BlogCard />
+            {blogs.map((blog) => (
+              <BlogCard key={blog._id} blog={blog} />
+            ))}
           </div>
         </div>
         <div className="col-span-3 bg-[#F2E3D5] p-2 mt-2">

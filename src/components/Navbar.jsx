@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -6,14 +7,15 @@ import { NavLink } from "react-router-dom";
 import Switch from "./Switch";
 import Avatar from "../assets/icons/avatar.png"
 
+
 const navigation = [
-  { name: "Home", to: "", current: true },
+  { name: "Home", to: "/",current: false },
   { name: "NewBlog", to: "/newblog", current: false },
   { name: "About", to: "/about", current: false },
 ];
 
 const profileMenu = [
-  { name: "My Blogs", to: "/myblog", current: true },
+  { name: "My Blogs", to: "/myblog", current: false },
   { name: "Profile", to: "/profile", current: false },
   { name: "Logout", to: "/about", current: false },
 ];
@@ -46,9 +48,9 @@ export default function Example() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex items-center space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <NavLink
                         key={item.name}
-                        href={item.href}
+                        to={item.to}
                         className={classNames(
                           item.current
                             ? "bg-gray-900 text-white"
@@ -57,8 +59,8 @@ export default function Example() {
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
-                        {item.name}
-                      </a>
+                        {item.name} 
+                      </NavLink>
                     ))}
                   </div>
                 </div>

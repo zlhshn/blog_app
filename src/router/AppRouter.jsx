@@ -6,6 +6,8 @@ import About from "../pages/About";
 import PrivateRouter from "./PrivateRouter";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import MyBlog from "../pages/MyBlog";
+import Profile from "../pages/Profile";
 
 const AppRouter = () => {
   return (
@@ -17,6 +19,10 @@ const AppRouter = () => {
           <Route index element={<Home />} />
           <Route path="newblog" element={<NewBlog />} />
           <Route path="about" element={<About />} />
+          <Route path="" element={<PrivateRouter />}>
+            <Route path="profile" element={<Profile />} />
+            <Route path="myblog" element={<MyBlog />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

@@ -12,60 +12,57 @@ const Register = () => {
 
         <div className="relative bottom-2 mt-5 sm:mx-auto sm:w-full sm:max-w-lg">
           <form className="space-y-6" action="#" method="POST">
-          <div>
-  <label
-    htmlFor="username"
-    className="block text-sm font-medium leading-6 text-gray-900"
-  >
-    Username
-  </label>
-  <div className="mt-1">
-    <input
-      id="username"
-      name="username"
-      type="text"
-      autoComplete="username"
-      required
-      className="block w-full rounded-md border-0 py-1 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#C8FEF2] sm:text-sm sm:leading-6"
-    />
-  </div>
-</div>
-<div>
-  <label
-    htmlFor="firstname"
-    className="block text-sm font-medium leading-6 text-gray-900"
-  >
-    Firstname
-  </label>
-  <div className="mt-1">
-    <input
-      id="firstname"
-      name="firstname"
-      type="text"
-      autoComplete="firstname"
-      required
-      className="block w-full rounded-md border-0 py-1 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#C8FEF2] sm:text-sm sm:leading-6"
-    />
-  </div>
-</div>
-<div>
-  <label
-    htmlFor="lastname"
-    className="block text-sm font-medium leading-6 text-gray-900"
-  >
-    Lastname
-  </label>
-  <div className="mt-1">
-    <input
-      id="lastname"
-      name="lastname"
-      type="text"
-      autoComplete="lastname"
-      required
-      className="block w-full rounded-md border-0 py-1 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#C8FEF2] sm:text-sm sm:leading-6"
-    />
-  </div>
-</div>
+            <div>
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Username
+              </label>
+              <div className="mt-1">
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  required
+                  className="block w-full rounded-md border-0 py-1 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#C8FEF2] sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="firstname"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Firstname
+              </label>
+              <div className="mt-1">
+                <input
+                  id="firstname"
+                  name="firstname"
+                  type="text"
+                  required
+                  className="block w-full rounded-md border-0 py-1 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#C8FEF2] sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="lastname"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Lastname
+              </label>
+              <div className="mt-1">
+                <input
+                  id="lastname"
+                  name="lastname"
+                  type="text"
+                  required
+                  className="block w-full rounded-md border-0 py-1 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#C8FEF2] sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
             <div>
               <label
