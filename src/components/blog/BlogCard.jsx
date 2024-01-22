@@ -1,5 +1,5 @@
 import React from "react";
-import { CommentIcon, EyeIcon, LikeIcon } from "../assets/icons/icons";
+import { CommentIcon, EyeIcon, LikeIcon } from "../../assets/icons/icons";
 
 const BlogCard = ({ blog }) => {
   const { title, content, _id, image, createdAt } = blog;
@@ -10,7 +10,7 @@ const BlogCard = ({ blog }) => {
           <div className="flex-1 w-[100%] ">
             <img className=" w-[100%] h-[100%]" src={image} alt="" />
           </div>
-          <div className="flex-2">
+          <div className="flex-1">
             <h3 className="font-vibes">{title}</h3>
             <p
               className="font-montserrat line-clamp-1"

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../components/blog/BlogCard";
 import NewsCard from "../components/NewsCard";
 import useBlogCalls from "../service/useBlogCalls";
 import { useEffect } from "react";

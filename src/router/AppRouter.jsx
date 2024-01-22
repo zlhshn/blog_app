@@ -8,10 +8,12 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import MyBlog from "../pages/MyBlog";
 import Profile from "../pages/Profile";
+import ScrollToTop from "../components/ScroolToTop";
 
 const AppRouter = () => {
   return (
     <Router>
+      <ScrollToTop/>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
