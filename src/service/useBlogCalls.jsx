@@ -20,7 +20,7 @@ const useBlogCalls = () => {
   };
 
 
-  const likeOrUnlike =async (id)=>{
+  const postLike =async (id)=>{
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`/blogs/${id}/postLike`)
@@ -32,7 +32,7 @@ const useBlogCalls = () => {
     }
   }
 
-  return {getBlog ,likeOrUnlike}
+  return {getBlog ,postLike}
 };
 
 export default useBlogCalls;

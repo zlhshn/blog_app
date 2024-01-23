@@ -30,9 +30,8 @@ const useAuthCalls = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosPublic.post("/users/", userInfo);
-      dispatch(registerSuccess({data,userInfo}));
+      dispatch(registerSuccess(data));
       navigate("/")
-      console.log(data);
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -44,7 +43,7 @@ const useAuthCalls = () => {
     try {
       await axiosWithToken("/auth/logout/");
       dispatch(logoutSucces());
-      navigate("/")
+      // navigate("/")
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);

@@ -15,7 +15,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const { user ,image} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const {logout}=useAuthCalls()
 
 
@@ -26,7 +26,7 @@ export default function Example() {
   ];
   
   const profileMenu = [
-    { name: `${user}'s Blog`, to: "/myblog", current: false },
+    { name: `${user.username}'s Blog`, to: "/myblog", current: false },
     { name: "Profile", to: "/profile", current: false },
     { name: "Logout", current: false ,onclick:logout},
   ];
@@ -89,7 +89,7 @@ export default function Example() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={image || Avatar}
+                          src={user.image || Avatar}
                           alt=""
                         />
                       </Menu.Button>
@@ -104,7 +104,7 @@ export default function Example() {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className=" absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none">
-                        {user ? (
+                        {user.username ? (
                           profileMenu.map((item) => (
                             <Menu.Item>
                               {({ active }) => (

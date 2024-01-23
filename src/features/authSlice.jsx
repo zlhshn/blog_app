@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: "",
   error: "",
-  image:"",
   token: "",
   loading: "",
 };
@@ -18,13 +17,12 @@ const authSlice = createSlice({
     },
     loginSuccess: (state, { payload }) => {
       state.loading = false;
-      state.user = payload.user.username;
+      state.user = payload.user
       state.token = payload.token;
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
-      state.user = payload.data.data.username;
-      state.image=payload.userInfo.image
+      state.user = payload.data
       state.token = payload.token;
     },
     logoutSucces: (state) => {
