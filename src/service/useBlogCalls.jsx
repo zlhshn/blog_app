@@ -4,6 +4,7 @@ import {
   getBlogSuccess,
   getLikeSucces,
   getDetailSucces,
+  getCategorySuccess,
 } from "../features/blogSlice";
 
 import { useDispatch } from "react-redux";
@@ -59,7 +60,29 @@ const useBlogCalls = () => {
     }
   };
 
-  return { getBlog, postLike, getDetail, postComment };
+  const postBlog = async (url, blogInfo) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.post(`/${url}/`, blogInfo);
+ 
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  };
+
+  const getCategories = async (url) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken(`/${url}/`);
+      dispatch(getCategorySuccess(data.data));
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  };
+
+  return { getBlog, postLike, getDetail, postComment, postBlog ,getCategories};
 };
 
 export default useBlogCalls;

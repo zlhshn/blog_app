@@ -5,6 +5,7 @@ const initialState = {
   error: [],
   loading: [],
   comment: [],
+  category:[],
   detail: {},
 };
 
@@ -23,7 +24,11 @@ const blogSlice = createSlice({
     getLikeSucces: (state) => {
       state.loading = false;
     },
-  
+    getCategorySuccess: (state, { payload }) => {
+      state.category = payload;
+      state.loading = false;
+    },
+   
     getDetailSucces: (state, { payload }) => {
       state.detail = payload;
       state.loading = false;
@@ -42,6 +47,7 @@ export const {
   getCommentSucces,
   getDetailSucces,
   fetchFail,
+  getCategorySuccess
 } = blogSlice.actions;
 
 export default blogSlice.reducer;
