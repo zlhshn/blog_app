@@ -3,14 +3,24 @@ import BlogCard from "../components/blog/BlogCard";
 import NewsCard from "../components/NewsCard";
 import useBlogCalls from "../service/useBlogCalls";
 import { useEffect } from "react";
+import React, { useState } from "react";
+import { Paginator } from "primereact/paginator";
 
-const Home = () => {
+const Home = ({ showButton, setShowButton }) => {
   const { blogs } = useSelector((state) => state.blog);
   const { getBlog } = useBlogCalls();
 
+  const [first, setFirst] = useState(0);
+  const [rows, setRows] = useState(5);
+
+  const onPageChange = (event) => {
+    setFirst(event.first);
+    setRows(event.rows);
+  };
   useEffect(() => {
-    getBlog("blogs?page=1");
+    getBlog(`blogs?page=1&limit=${rows}`);
   }, []);
+  console.log(showButton);
 
   return (
     <div className="mx-[5rem]">
@@ -18,7 +28,6 @@ const Home = () => {
         <div className="col-span-2 p-2">
           <div className="relative bg-[#F2E3D5]">
             <label htmlFor="Search" className="sr-only">
-          
               Search
             </label>
 
@@ -49,7 +58,6 @@ const Home = () => {
                     d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                   />
                 </svg>
-        
               </button>
             </span>
           </div>
@@ -89,10 +97,21 @@ const Home = () => {
         <div className="col-span-3 bg-[#F2E3D5] p-2 mt-2">
           <h3 className="mx-3">NEWS</h3>
           <div className="grid grid-cols-12 gap-2">
-            {[1, 2, 3, 4].map((item,i) => (
+            {[1, 2, 3, 4].map((item, i) => (
               <NewsCard key={i} />
             ))}
           </div>
+        </div>
+      </div>
+
+      <div>
+        <div className="card">
+          <Paginator
+            first={first}
+            rows={rows}
+            totalRecords={blogs.length}
+            onPageChange={onPageChange}
+          />
         </div>
       </div>
     </div>
