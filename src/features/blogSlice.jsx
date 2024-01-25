@@ -7,6 +7,7 @@ const initialState = {
   comment: [],
   category:[],
   userBlog:[],
+  totalBlogs:[],
   detail: {},
 };
 
@@ -18,8 +19,9 @@ const blogSlice = createSlice({
       state.error = false;
       state.loading = true;
     },
-    getBlogSuccess: (state, { payload }) => {
-      state.blogs = payload;
+    getBlogSuccess: (state, actions) => {
+      state.blogs = actions.payload.apiData;
+      state.totalBlogs = actions.payload.totalRecords
       state.loading = false;
     },
     getLikeSucces: (state) => {

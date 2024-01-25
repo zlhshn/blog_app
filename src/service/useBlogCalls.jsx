@@ -20,7 +20,8 @@ const useBlogCalls = () => {
     try {
       const { data } = await axiosPublic(`/${url}`);
       const apiData = data.data;
-      dispatch(getBlogSuccess(apiData));
+      const totalRecords= data.details.totalRecords
+      dispatch(getBlogSuccess({apiData,totalRecords}));
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);

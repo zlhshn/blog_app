@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { Paginator } from "primereact/paginator";
 
 const Home = ({ showButton, setShowButton }) => {
-  const { blogs } = useSelector((state) => state.blog);
+  const { blogs, totalBlogs } = useSelector((state) => state.blog);
   const { getBlog } = useBlogCalls();
 
   const [first, setFirst] = useState(0);
@@ -18,9 +18,9 @@ const Home = ({ showButton, setShowButton }) => {
     setRows(event.rows);
   };
   useEffect(() => {
-    getBlog(`blogs?page=1&limit=${rows}`);
-  }, []);
-  console.log(showButton);
+    getBlog(`blogs?page=${first / rows + 1}&limit=5`);
+  }, [first, rows]);
+
 
   return (
     <div className="mx-[5rem]">
@@ -109,7 +109,7 @@ const Home = ({ showButton, setShowButton }) => {
           <Paginator
             first={first}
             rows={rows}
-            totalRecords={blogs.length}
+            totalRecords={totalBlogs}
             onPageChange={onPageChange}
           />
         </div>
