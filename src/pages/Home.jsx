@@ -7,26 +7,34 @@ import React, { useState } from "react";
 import { Paginator } from "primereact/paginator";
 
 const Home = ({ showButton, setShowButton }) => {
-  const { blogs, totalBlogs } = useSelector((state) => state.blog);
-  const { getBlog } = useBlogCalls();
+  const { blogs, totalBlogs, category } = useSelector((state) => state.blog);
+  const { getBlog, getCategories, filterBlog,searchBlog } = useBlogCalls();
 
   const [first, setFirst] = useState(0);
   const [rows, setRows] = useState(5);
+  const [search, setSearch] = useState("");
+console.log(blogs);
 
+const handleChange=(e)=>{
+
+ setSearch(e.target.value)
+// searchBlog("blogs",search)
+
+}
   const onPageChange = (event) => {
     setFirst(event.first);
     setRows(event.rows);
   };
   useEffect(() => {
-    getBlog(`blogs?page=${first / rows + 1}&limit=5`);
-  }, [first, rows]);
-
+    getBlog(`blogs?page=${first / rows + 1}&limit=4&search[title]=${search}`);
+    getCategories("categories");
+  }, [first, rows,search]);
 
   return (
-    <div className="mx-[5rem]">
-      <div className="grid grid-cols-12 gap-2">
-        <div className="col-span-2 p-2">
-          <div className="relative bg-[#F2E3D5]">
+    <div className="mx-[1rem]">
+      <div className="grid grid-cols-12  gap-1">
+        <div className="col-span-2 p-2 rounded-md bg-homeBg mt-2  ">
+          <div className="relative bg-homeBg">
             <label htmlFor="Search" className="sr-only">
               Search
             </label>
@@ -35,7 +43,9 @@ const Home = ({ showButton, setShowButton }) => {
               type="text"
               id="Search"
               placeholder="Search..."
-              className="w-full bg-[#F2E3D5] rounded-md border-gray-200 py-2.5  ps-2 pe-10 shadow-sm sm:text-sm"
+              value={search}
+              className="w-full bg-homeBg rounded-md border-gray-200 py-2.5  ps-2 pe-10 shadow-sm sm:text-sm"
+              onChange={(e)=>handleChange(e)}
             />
 
             <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
@@ -62,14 +72,27 @@ const Home = ({ showButton, setShowButton }) => {
             </span>
           </div>
 
-          <div className="bg-[#F2E3D5] mt-2 p-2">
-            <p className="font-vibes font-semibold m-auto ">Categories</p>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-              <p className="border border-b-1 border-b-gray-400">Categories</p>
+          <div className="bg-homeBg mt-2 p-2">
+            <p className="font-grace font-semibold text-2xl m-auto ">Categories</p>
+
+            <p
+              className="border border-b-1 border-b-gray-400 font-grace text-xl "
+              onClick={() => getBlog(`blogs?page=${first / rows + 1}&limit=5`)}
+            >
+              All
+            </p>
+            {category.map((item) => (
+              <p
+                key={item._id}
+                className="border border-b-1 border-b-gray-400 font-grace text-xl mt-2"
+                onClick={() => filterBlog("blogs", item._id)}
+              >
+                {item.name}
+              </p>
             ))}
           </div>
 
-          <div className="bg-[#F2E3D5] mt-2 p-2">
+          <div className="bg-homeBg mt-2 p-2">
             <p className="font-grace font-extrabold mb-2">Latest Posts</p>
             {[1, 2, 3, 4, 5].map((item) => (
               <div className="flex  justify-center items-start gap-5">
@@ -87,14 +110,25 @@ const Home = ({ showButton, setShowButton }) => {
           </div>
         </div>
 
-        <div className="col-span-7 bg-[#F2E3D5] p-2 mt-2">
+        <div className="col-span-7 bg-[#daece8]  mt-2 rounded-md relative ">
           <div className="grid grid-cols-12 gap-2">
             {blogs.map((blog) => (
-              <BlogCard key={blog._id} blog={blog} />
+              <BlogCard key={blog._id} blog={blog} first={first} rows={rows}/>
             ))}
           </div>
+          <div>
+        <div className="card absolute bottom-0 w-full  bg-homeBg rounded-md ">
+          <Paginator
+            first={first}
+            rows={rows}
+            totalRecords={totalBlogs}
+            onPageChange={onPageChange}
+            className="bg-homeBg rounded-md "
+          />
         </div>
-        <div className="col-span-3 bg-[#F2E3D5] p-2 mt-2">
+      </div>
+        </div>
+        <div className="col-span-3 bg-homeBg p-2 mt-2 rounded-md">
           <h3 className="mx-3">NEWS</h3>
           <div className="grid grid-cols-12 gap-2">
             {[1, 2, 3, 4].map((item, i) => (
@@ -104,16 +138,7 @@ const Home = ({ showButton, setShowButton }) => {
         </div>
       </div>
 
-      <div>
-        <div className="card">
-          <Paginator
-            first={first}
-            rows={rows}
-            totalRecords={totalBlogs}
-            onPageChange={onPageChange}
-          />
-        </div>
-      </div>
+   
     </div>
   );
 };

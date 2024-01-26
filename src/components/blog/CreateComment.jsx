@@ -22,16 +22,14 @@ const CreateComment = ({ _id }) => {
   return (
     <form>
       <div>
-        <label htmlFor="OrderNotes" className="sr-only">
-          Order notes
-        </label>
+       
 
-        <div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+        <div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 my-7 mx-2">
           <textarea
-            id="OrderNotes"
-            className="w-full resize-none border-none align-top focus:ring-0 sm:text-sm"
+            id="comment"
+            className="w-full resize-none border-none align-top focus:ring-0 sm:text-sm placeholder:font-badScript placeholder:p-2"
             rows="4"
-            placeholder="Enter any additional order notes..."
+            placeholder="Enter Your Comments..."
             name="comment"
             value={value}
             onChange={(e) => setValue(e.target.value)}

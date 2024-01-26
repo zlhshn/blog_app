@@ -5,7 +5,9 @@ import {
   getLikeSucces,
   getDetailSucces,
   getCategorySuccess,
-  getUserBlogSuccess
+  getUserBlogSuccess,
+  getfilterSuccess,
+  getSearchSuccess
 } from "../features/blogSlice";
 
 import { useDispatch } from "react-redux";
@@ -28,12 +30,42 @@ const useBlogCalls = () => {
     }
   };
 
-  const postLike = async (id) => {
+
+  const filterBlog =async (url,id)=>{
+
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`/blogs/${id}/postLike`);
+      const { data } = await axiosPublic(`/${url}/?filter[categoryId]=${id}`);
+      const apiData = data.data;
+      const totalRecords= data.details.totalRecords
+      dispatch(getfilterSuccess({apiData,totalRecords}));
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+
+  }
+  const searchBlog =async (url,value)=>{
+
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosPublic(`/${url}/?search[content]=${value}`);
+      const apiData = data.data;
+      const totalRecords= data.details.totalRecords
+      dispatch(getSearchSuccess({apiData,totalRecords}));
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+
+  }
+
+  const postLike = async (url,id,page) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.post(`/${url}/${id}/postLike`);
       dispatch(getLikeSucces());
-      getBlog("blogs");
+      getBlog(page);
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -125,7 +157,9 @@ const useBlogCalls = () => {
     getCategories,
     getUserBlog,
     putBlog,
-    deleteBlog
+    deleteBlog,
+    filterBlog,
+    searchBlog
 
   };
 };

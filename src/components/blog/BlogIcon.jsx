@@ -5,15 +5,17 @@ import { toastWarn } from "../../helper/ToastNotify";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../../service/useBlogCalls";
 
-const BlogIcon = ({ _id, likes, comments, countOfVisitors }) => {
+const BlogIcon = ({ _id, likes, comments, countOfVisitors, first, rows }) => {
   const { user } = useSelector((state) => state.auth);
-  const { postLike } = useBlogCalls();
+  const { postLike, getBlog } = useBlogCalls();
 
   return (
-  <>
+    <div className="flex flex-row gap-3">
       <p
-        className="flex cursor-pointer"
-        onClick={() => (user ? postLike(_id) : toastWarn("You must Login"))}
+        className="flex  cursor-pointer"
+        onClick={() =>user ? postLike("blogs", _id,`blogs?page=${first / rows + 1}&limit=5`) : toastWarn("You must Login")
+        
+        }
       >
         <span
           className={`cursor-pointer hover:text-gray-400 ${
@@ -31,8 +33,8 @@ const BlogIcon = ({ _id, likes, comments, countOfVisitors }) => {
       <p className="flex">
         <span> {EyeIcon}</span>
         <span>{countOfVisitors}</span>
-      </p></>
-   
+      </p>
+    </div>
   );
 };
 

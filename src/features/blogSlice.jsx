@@ -24,6 +24,16 @@ const blogSlice = createSlice({
       state.totalBlogs = actions.payload.totalRecords
       state.loading = false;
     },
+    getfilterSuccess:(state, actions) => {
+      state.blogs = actions.payload.apiData;
+      state.totalBlogs = actions.payload.totalRecords
+      state.loading = false;
+    },
+    getSearchSuccess:(state, actions) => {
+      state.blogs = actions.payload.apiData;
+      state.totalBlogs = actions.payload.totalRecords
+      state.loading = false;
+    },
     getLikeSucces: (state) => {
       state.loading = false;
     },
@@ -31,6 +41,7 @@ const blogSlice = createSlice({
       state.category = payload;
       state.loading = false;
     },
+    
    
     getDetailSucces: (state, { payload }) => {
       state.detail = payload;
@@ -56,6 +67,8 @@ export const {
   fetchFail,
   getCategorySuccess,
   getUserBlogSuccess,
+  getfilterSuccess,
+  getSearchSuccess
 } = blogSlice.actions;
 
 export default blogSlice.reducer;
