@@ -1,19 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const NewsCard = () => {
+const NewsCard = ({ item }) => {
+  const { urlToImage, url, title } = item;
   return (
-    <div className="col-span-12 p-2 flex h-[100px] gap-2">
-      <div>
-        <img
-          src="https://image.hurimg.com/i/hurriyet/75/866x494/65a2616101672dff2ee341a3.jpg"
-          alt=""
-          className="h-[100%]"
-        
-        />
+    <div className="col-span-12 p-2 flex justify-between h-[100px] items-center gap-2">
+      <div className="w-[30%]">
+        <Link to={url}>
+          {" "}
+          <img
+            src={urlToImage || ""}
+            alt="newsImage"
+            className="h-[80px] w-[300px] rounded-md"
+          />{" "}
+        </Link>
       </div>
-      <div className="line-clamp-2">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-      </div>
+      <div className="line-clamp-3 flex-grow w-[60%] mb-3">{title}</div>
     </div>
   );
 };

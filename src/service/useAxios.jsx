@@ -13,7 +13,12 @@ const useAxios = () => {
     headers: { Authorization: `Token ${token}` },
   });
 
-  return { axiosPublic, axiosWithToken };
+  const axiosNews=axios.create({
+
+    baseURL: `${process.env.REACT_APP_NEWS_URL}`,
+  })
+
+  return { axiosPublic, axiosWithToken,axiosNews };
 };
 
 export default useAxios;

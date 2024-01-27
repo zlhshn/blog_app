@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  news:[],
   blogs: [],
   error: [],
   loading: [],
   comment: [],
   category:[],
   userBlog:[],
+  allBlogs:[],
   totalBlogs:[],
   detail: {},
 };
@@ -19,9 +21,17 @@ const blogSlice = createSlice({
       state.error = false;
       state.loading = true;
     },
+    getNewsSuccess:(state, actions) => {
+      state.news = actions.payload
+      state.loading = false;
+    },
     getBlogSuccess: (state, actions) => {
       state.blogs = actions.payload.apiData;
       state.totalBlogs = actions.payload.totalRecords
+      state.loading = false;
+    },
+    getAllBlogSuccess:(state, actions) => {
+      state.allBlogs = actions.payload
       state.loading = false;
     },
     getfilterSuccess:(state, actions) => {
@@ -68,7 +78,9 @@ export const {
   getCategorySuccess,
   getUserBlogSuccess,
   getfilterSuccess,
-  getSearchSuccess
+  getSearchSuccess,
+  getNewsSuccess,
+  getAllBlogSuccess
 } = blogSlice.actions;
 
 export default blogSlice.reducer;

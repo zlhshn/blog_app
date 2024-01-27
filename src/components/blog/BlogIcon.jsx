@@ -13,7 +13,7 @@ const BlogIcon = ({ _id, likes, comments, countOfVisitors, first, rows }) => {
     <div className="flex flex-row gap-3">
       <p
         className="flex  cursor-pointer"
-        onClick={() =>user ? postLike("blogs", _id,`blogs?page=${first / rows + 1}&limit=5`) : toastWarn("You must Login")
+        onClick={() =>user ? postLike("blogs", _id,`blogs?page=${first / rows + 1}&limit=3`) : toastWarn("You must Login")
         
         }
       >
