@@ -21,7 +21,7 @@ console.log(blog);
   return (
     <>
       <div className="col-span-12  bg-[#f7f5f7] border border-[#503a53] rounded-lg border-s-[15px] shadow-2xl m-6">
-        <div className=" sm:flex justify-between gap-x-2">
+        <div className=" sm:flex justify-between items-center gap-x-2">
           <div className="flex-1 w-[100%] h-[310px] pe-4">
             <img className=" w-[100%] h-[100%] p-3" src={image} alt="" />
           </div>
@@ -36,7 +36,7 @@ console.log(blog);
                 dangerouslySetInnerHTML={{ __html: content }}
               ></p>
 
-              <p className="font-light text-sm text-gray-400 mt-4 mb-8">
+              <p className="font-light text-sm text-gray-400 mt-4 mb-3">
                 Published Date: 
                 {new Date(createdAt).toLocaleString("en-US", {
                   year: "numeric",
@@ -48,7 +48,7 @@ console.log(blog);
                 })}
               </p>
               <p className="font-vibes text-xl mb-4 text-[#846488]">{user && isPublish && "Published"}</p>
-              <p className="font-vibes text-xl mb-4 text-[#846488]">{user && !isPublish && "Drafted"}</p>
+              <p className="font-vibes text-xl mb-8 text-[#846488]">{user && !isPublish && "Drafted"}</p>
 
               <div className="flex justify-between px-2 items-center absolute bottom-1 w-full">
                 <div className="flex justify-between items-center gap-2">

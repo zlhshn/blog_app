@@ -47,7 +47,7 @@ const NewBlogCard = ({
   };
 
   return (
-    <div className="flex flex-col gap-4 py-10 px-[2rem] md:px-[5rem] lg:px-[15rem] xl:px-[25rem]">
+    <div className="flex flex-col gap-4 py-10 px-[2rem] md:px-[5rem] ">
       <div>
         <label
           htmlFor="title"
@@ -97,8 +97,9 @@ const NewBlogCard = ({
             name="categoryId"
             id="categoryId"
             onChange={handleChange}
+            required
             value={data.categoryId || ""}
-            className="mt-1.5 w-full px-2 h-10 rounded-lg border-gray-300 outline-none text-gray-700 sm:text-sm"
+            className="mt-1.5 w-full px-2 h-10 rounded-lg border border-gray-300 outline-none text-gray-700 sm:text-sm"
           >
             {" "}
             <option value="">Please select</option>
@@ -113,6 +114,7 @@ const NewBlogCard = ({
           value={text || data.content || "" }
           onTextChange={handleEditorChange}
           name="content"
+          required
           style={{ height: "320px", outline:"none" }}
         />
       </div>

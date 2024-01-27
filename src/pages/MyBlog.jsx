@@ -8,14 +8,12 @@ const MyBlog = () => {
   const { user } = useSelector((state) => state.auth);
   const { userBlog } = useSelector((state) => state.blog);
   const { getUserBlog } = useBlogCalls();
-  console.log(userBlog);
-
-  console.log(user);
+ 
   useEffect(() => {
     getUserBlog("blogs", user._id);
   }, []);
 
-  console.log(userBlog);
+
   return (
     <div className="grid grid-cols-12 m-auto bg-homeBg lg:px-[7rem] gap-1 min-h-[85vh] ">
       <div className=" my-3 mx-3 col-span-12 sm:col-span-3  p-2 bg-[#6c9197]  border-[3px] rounded-2xl">
