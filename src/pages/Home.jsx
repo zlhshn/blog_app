@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import { Paginator } from "primereact/paginator";
 import { Calendar } from "primereact/calendar";
 import { useNavigate } from "react-router-dom";
+import { FontStyle } from "quill";
+import { SizeClass } from "quill";
 
 const Home = ({ showButton, setShowButton }) => {
   const { blogs, totalBlogs, category, news, allBlogs } = useSelector(
@@ -36,12 +38,10 @@ const Home = ({ showButton, setShowButton }) => {
     getAllBlogs("blogs");
   }, [first, rows, search]);
 
-  console.log(allBlogs);
-
   return (
-    <div className="mx-[1rem]">
+    <div className="mx-[.5rem]">
       <div className="grid grid-cols-12  gap-1">
-        <div className="col-span-2 p-2 rounded-md bg-homeBg mt-2  ">
+        <div className="col-span-12 sm:col-span-3  lg:col-span-2 p-2 rounded-md bg-homeBg mt-2  ">
           <div className="relative bg-homeBg">
             <label htmlFor="Search" className="sr-only">
               Search
@@ -108,37 +108,44 @@ const Home = ({ showButton, setShowButton }) => {
             ))}
           </div>
 
-          <div className="bg-homeBg mt-2 p-2 ">
-            <p className="font-grace font-extrabold mb-2 text-center">Latest Posts</p>
+          <div className="bg-homeBg mt-2 p-2 hidden sm:block ">
+            <p className="font-grace font-extrabold mb-2 gap-2 text-center">
+              Latest Posts
+            </p>
             {allBlogs.slice(-3).map((item) => (
               <div
                 key={item._id}
-                className="flex  flex-col justify-center items-start gap-3 border border-b-1 border-b-gray-400"
+                className="flex  flex-col  gap-3 border border-b-1 border-b-gray-400"
                 onClick={() => navigate(`/detail/${item._id}`)}
               >
-                <div className="mt-2 w-full">
-                  <img src={item.image} alt="image" className="h-20 w-full"/>
+                <div className="mt-2 w-full  flex-1 items-center">
+                  <img
+                    src={item.image}
+                    alt="image"
+                    className="h-[130px] w-full cursor-pointer"
+                  />
                 </div>
-                <div className=" text-[25px] font-bold font-montserrat mt-2"></div>
-                <div className="w-full">
-                  <p className="line-clamp-3">{item.content}</p>
-                  <p className=" font-montserrat font-semibold text-end">
-                    {item.title}
-                  </p>
+                <div className=" text-[15px] h-[30%] font-montserrat mt-2 flex-1">
+                  <div className="w-full ">
+                    <p className="line-clamp-3">{item.content}</p>
+                    <p className=" font-montserrat font-semibold  text-end mb-3">
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="col-span-7 bg-[#daece8]  mt-2 rounded-md relative ">
-          <div className="grid grid-cols-12 gap-2">
+        <div className="col-span-12 sm:col-span-9 lg:col-span-7 bg-[#daece8]  mt-2  rounded-md relative ">
+          <div className="grid grid-cols-12 gap-2 mb-40">
             {blogs.map((blog) => (
               <BlogCard key={blog._id} blog={blog} first={first} rows={rows} />
             ))}
           </div>
-          <div>
-            <div className="card absolute bottom-0 w-full  bg-homeBg rounded-md ">
+          <div className="">
+            <div className="card absolute bottom-0 w-full  bg-homeBg rounded-md  ">
               <Paginator
                 first={first}
                 rows={rows}
@@ -149,22 +156,32 @@ const Home = ({ showButton, setShowButton }) => {
             </div>
           </div>
         </div>
-        <div className="col-span-3 bg-homeBg p-2 mt-2 rounded-md">
-          <h3 className="mx-3">NEWS</h3>
+
+        <div className="hidden lg:block lg:col-span-3 bg-homeBg p-1 mt-2 rounded-md ">
+
+            <div className="flex justify-center w-full">
+              <Calendar
+              value={date}
+              onChange={(e) => setDate(e.value)}
+              inline
+              style={{ padding: "1rem", overflowX: "hidden"}}
+
+             
+            />
+      
+            
+          </div>
+          <div className=" mt-8">
+            <h3 className="mx-3 text-center font-montserrat font-semibold text-2xl" >NEWS</h3>
           <div className="grid grid-cols-12 gap-5">
             {news.slice(0, 6).map((item, i) => (
               <NewsCard key={i} item={item} />
             ))}
           </div>
-
-          <div className="">
-            <Calendar
-              value={date}
-              onChange={(e) => setDate(e.value)}
-              inline
-              showWeek
-            />
           </div>
+          
+
+          
         </div>
       </div>
     </div>

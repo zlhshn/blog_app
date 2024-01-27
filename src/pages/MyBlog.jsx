@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../service/useBlogCalls";
 import BlogCard from "../components/blog/BlogCard";
-import avatar from "../assets/icons/avatar.png"
+import avatar from "../assets/icons/avatar.png";
 
 const MyBlog = () => {
   const { user } = useSelector((state) => state.auth);
@@ -15,28 +15,53 @@ const MyBlog = () => {
     getUserBlog("blogs", user._id);
   }, []);
 
+  console.log(userBlog);
   return (
-    <div className="grid grid-cols-12  gap-1 min-h-[85vh]">
-      <div className=" col-span-8">
-        {userBlog.map((blog) => (
-          <BlogCard blog={blog} />
-        ))}
-      </div>
-
-      <div className=" my-3 col-span-4 p-2 ">
-        <div className="border bg-homeBg p-4 ">
-          <div className="m-auto">
-            <img src={(user.image) || avatar} alt="" className="h-[300px]" />
+    <div className="grid grid-cols-12 m-auto bg-homeBg lg:px-[7rem] gap-1 min-h-[85vh] ">
+      <div className=" my-3 mx-3 col-span-12 sm:col-span-3  p-2 bg-[#6c9197]  border-[3px] rounded-2xl">
+        <div className="">
+          <div className="flex justify-center">
+            <img
+              src={user.image || avatar}
+              alt=""
+              className="h-[250px] text-center w-[250px]  rounded-full"
+            />
           </div>
-          <div className="flex flex-col gap-3 ">
+          <div className="flex flex-col gap-3 mt-6 font-montserrat text-lg text-white font-semibold">
+            <p className="">
+              <span className="font-bold text-[#846488]">Username:</span>{" "}
+              {user.username}
+            </p>
             <p>
+              <span className="font-bold text-[#846488]">Full Name:</span>{" "}
               {user.firstName} {user.lastName}
             </p>
-            <p>{user.username}</p>
-            <p>{user.email}</p>
-            <p>{user.bio}</p>
+
+            <p>
+              {" "}
+              <span className="font-bold text-[#846488]">Email:</span>{" "}
+              {user.email}
+            </p>
+            <p>
+              <span className="font-bold text-[#846488]">Bio:</span> {user.bio}
+            </p>
+
+            <p>
+              {" "}
+              <span className="font-bold text-[#846488]">
+                Create account:
+              </span>{" "}
+              {new Date(user.createdAt).toLocaleDateString()}
+            </p>
           </div>
         </div>
+      </div>
+      <div className="col-span-12 sm:col-span-9">
+        {userBlog.length === 0 ? (
+          <p className="text-center font-dancing mt-10 font-extrabold text-2xl">You don't have any blocks</p>
+        ) : (
+          userBlog.map((blog) => <BlogCard blog={blog} />)
+        )}
       </div>
     </div>
   );

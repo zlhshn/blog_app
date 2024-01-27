@@ -27,10 +27,9 @@ export default function Example() {
   
   const profileMenu = [
     { name: `${user.username}'s Blog`, to: "/myblog", current: false },
-    { name: "Profile", to: "/profile", current: false },
     { name: "Logout", current: false ,onclick:logout},
   ];
-  
+  console.log(user);
 
   return (
     <Disclosure as="nav" className=" bg-main dark:bg-gray-900 ">
@@ -72,9 +71,9 @@ export default function Example() {
                 </div>
                 <div className="flex   items-center ">
                   {" "}
-                  <span className="text-white font-dancing hidden sm:block">
+                  <NavLink to="/" className="text-white font-dancing hidden sm:block">
                     DeerBlog
-                  </span>
+                  </NavLink>
                   <img className="w-[100px]" src={logo} alt="Your Company" />
                 </div>
 

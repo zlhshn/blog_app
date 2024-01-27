@@ -13,7 +13,7 @@ import avatar from "../../src/assets/icons/avatar.png";
 const Detail = () => {
   const { id } = useParams();
   const { detail } = useSelector((state) => state.blog);
- 
+
   const { user } = useSelector((state) => state.auth);
   const { getDetail, deleteBlog } = useBlogCalls();
   const [open, setOpen] = useState(false);
@@ -31,7 +31,7 @@ const Detail = () => {
     categoryId,
   } = detail;
 
-  console.log(user);
+
 
   const handleDelete = () => {
     deleteBlog("blogs", _id);
@@ -44,26 +44,30 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="bg-[#e6e1e6]  flex flex-col gap-4  m-auto ">
-      <div className="px-[5rem] sm:px-[35rem]  py-[5rem] w-[100%]">
+    <div className="bg-[#e6e1e6]  flex flex-col gap-4 py-5 m-auto x ">
+      <div className="px-[3rem]  w-[100%] lg:px-[10rem] xl:px-[20rem] ">
         <div className="m-auto mb-10 w-[100%] text-center">
-          <img src={image} alt="image" className="w-[100%] rounded-3xl  h-[300px]" />
+          <img
+            src={image}
+            alt="image"
+            className="w-[100%] rounded-3xl  h-[380px]"
+          />
         </div>
 
-        <div className="flex">
-          <p>
-            <img  src={avatar || (user && user.image)} alt="" className="w-10 h-10 rounded-full" />
+        <div className="flex gap-2 items-center">
+          <p className="w-10 h-10 bg-main rounded-full text-white flex justify-center items-center text-lg">
+            {userId?.username.slice(0, 1)}
           </p>
           <p>
-            <h1>{user.username}</h1>
-            <h3> {new Date(createdAt).toLocaleString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  hour: "numeric",
-                  minute: "numeric",
-                  second: "numeric",
-                })}</h3>
+            <h1>{userId?.username}</h1>
+            <h3>
+              {" "}
+              {new Date(createdAt).toLocaleString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </h3>
           </p>
         </div>
         <div className="text-center font-vibes m-7 text-xl font-semibold ">
@@ -72,16 +76,16 @@ const Detail = () => {
 
         <div className="text-justify font-badScript my-5">{content}</div>
 
-        <div className="flex ">
+        {/* <div className="flex ">
           <BlogIcon
             likes={likes}
             comments={comments}
             countOfVisitors={countOfVisitors}
             _id={_id}
           />
-        </div>
+        </div> */}
         {userId?._id === user?._id && (
-          <div className="mt-10 me-3">
+          <div className="mt-10">
             <button
               onClick={() => setOpen(true)}
               className="bg-[#846488] p-2 rounded-md m-3 text-white"
@@ -89,7 +93,7 @@ const Detail = () => {
               UPDATE
             </button>
             <button
-              className="bg-[#846488] p-2 rounded-md m-3 text-white"
+              className="bg-[#846488] p-2 rounded-md mx-3 text-white"
               onClick={handleDelete}
             >
               DELETE

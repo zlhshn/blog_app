@@ -5,7 +5,7 @@ export default function NewBlog() {
  
 
   return (
-    <div className="bg-homeBg  p-10 min-h-[85vh]">
+    <div className="bg-homeBg   min-h-[85vh]">
 
     
         <NewBlogCard  />

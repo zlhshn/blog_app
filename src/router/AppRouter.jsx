@@ -7,7 +7,7 @@ import PrivateRouter from "./PrivateRouter";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import MyBlog from "../pages/MyBlog";
-import Profile from "../pages/Profile";
+
 import ScrollToTop from "../components/ScroolToTop";
 import Detail from "../pages/Detail";
 import { useState } from "react";
@@ -32,7 +32,6 @@ const AppRouter = () => {
           <Route path="detail/:id" element={<Detail />} />
           <Route path="" element={<PrivateRouter />}>
             <Route path="newblog" element={<NewBlog />} />
-            <Route path="profile" element={<Profile />} />
             <Route path="myblog" element={<MyBlog />} />
           </Route>
         </Route>
