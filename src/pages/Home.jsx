@@ -108,18 +108,21 @@ const Home = ({ showButton, setShowButton }) => {
             ))}
           </div>
 
-          <div className="bg-homeBg mt-2 p-2">
+          <div className="bg-homeBg mt-2 p-2 ">
             <p className="font-grace font-extrabold mb-2 text-center">Latest Posts</p>
-            {allBlogs.slice(-5).map((item) => (
+            {allBlogs.slice(-3).map((item) => (
               <div
                 key={item._id}
-                className="flex  justify-center items-start gap-5"
+                className="flex  flex-col justify-center items-start gap-3 border border-b-1 border-b-gray-400"
                 onClick={() => navigate(`/detail/${item._id}`)}
               >
+                <div className="mt-2 w-full">
+                  <img src={item.image} alt="image" className="h-20 w-full"/>
+                </div>
                 <div className=" text-[25px] font-bold font-montserrat mt-2"></div>
-                <div>
+                <div className="w-full">
                   <p className="line-clamp-3">{item.content}</p>
-                  <p className="border border-b-1 border-b-gray-400 font-montserrat font-semibold text-end">
+                  <p className=" font-montserrat font-semibold text-end">
                     {item.title}
                   </p>
                 </div>
