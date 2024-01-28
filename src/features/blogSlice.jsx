@@ -51,8 +51,7 @@ const blogSlice = createSlice({
       state.category = payload;
       state.loading = false;
     },
-    
-   
+  
     getDetailSucces: (state, { payload }) => {
       state.detail = payload;
       state.loading = false;

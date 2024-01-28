@@ -31,8 +31,6 @@ const Detail = () => {
     categoryId,
   } = detail;
 
-
-
   const handleDelete = () => {
     deleteBlog("blogs", _id);
     navigate("/myblog");
@@ -44,7 +42,7 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="bg-[#e6e1e6]  flex flex-col gap-4 py-5 m-auto x ">
+    <div className="bg-[#e6e1e6]  flex flex-col gap-4 py-5 m-auto x min-h-[85vh]">
       <div className="px-[3rem]  w-[100%] lg:px-[10rem] xl:px-[20rem] ">
         <div className="m-auto mb-10 w-[100%] text-center">
           <img
@@ -74,7 +72,10 @@ const Detail = () => {
           {title}
         </div>
 
-        <div className="text-justify font-badScript my-5">{content}</div>
+        <div
+          className="text-justify font-badScript my-5"
+          dangerouslySetInnerHTML={{ __html: content }}
+        ></div>
 
         {/* <div className="flex ">
           <BlogIcon
@@ -115,7 +116,10 @@ const Detail = () => {
             <CreateComment _id={_id} />
             <div className="flex flex-col gap-6">
               {comments?.map((item) => (
-                <Comments item={item} />
+                <div key={item._id}>
+            
+                  <Comments item={item} />
+                </div>
               ))}
             </div>
           </div>

@@ -15,7 +15,7 @@ const MyBlog = () => {
 
 
   return (
-    <div className="grid grid-cols-12 m-auto bg-homeBg lg:px-[7rem] gap-1 min-h-[85vh] ">
+    <div className="grid grid-cols-12 m-auto bg-homeBg lg:px-[7rem] gap-1 min-h-[90vh] ">
       <div className=" my-3 mx-3 col-span-12 sm:col-span-3  p-2 bg-[#6c9197]  border-[3px] rounded-2xl">
         <div className="">
           <div className="flex justify-center">
@@ -56,9 +56,9 @@ const MyBlog = () => {
       </div>
       <div className="col-span-12 sm:col-span-9">
         {userBlog.length === 0 ? (
-          <p className="text-center font-dancing mt-10 font-extrabold text-2xl">You don't have any blocks</p>
+          <p className="text-center font-dancing mt-10 font-extrabold text-red-600 text-2xl">You don't have any blocks</p>
         ) : (
-          userBlog.map((blog) => <BlogCard blog={blog} />)
+          userBlog.map((blog) =><div key={blog._id}> <BlogCard blog={blog} /></div>)
         )}
       </div>
     </div>

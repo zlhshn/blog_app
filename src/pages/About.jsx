@@ -4,8 +4,8 @@ import deer from "../assets/image/logo1.png";
 const About = () => {
   return (
     <div className="min-h-[85vh] bg-homeBg flex justify-center items-center text-white">
-      <div className="border border-[#00323B] m-20 py-5 px-10 rounded-xl bg-[#00323bb6] w-[70%] flex justify-center items-center ">
-        <div className="w-[50%] h-1/2 mt-5">
+      <div className="border border-[#00323B] sm:m-20 my-4 py-5 px-10 rounded-xl bg-[#00323bb6] w-[70%] flex justify-center items-center ">
+        <div className=" sm:w-[50%] h-1/2 mt-5">
           <h3 className="font-grace text-center text-2xl mb-10 ">ABOUT US</h3>
           <p className="font-grace text-xl leading-10 tracking-wider">
             Deer blog aims to offer a world filled with enjoyable content,
@@ -16,7 +16,7 @@ const About = () => {
             hope the time you spend here brings you enjoyable moments.
           </p>
         </div>{" "}
-        <div className="w-[50%] h-1/2">
+        <div className="hidden sm:block w-[50%] h-1/2">
           <img src={deer} alt="" className="" />
         </div>
       </div>

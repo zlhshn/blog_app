@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer  className="bg-main mt-2 ">
-    <div  className="mx-auto max-w-screen-xl ps-16 py-8 sm:px-6 lg:px-8 gap-2">
+    <div  className="mx-auto max-w-screen-xl px-10 py-8 sm:px-6 lg:px-8 gap-2">
       <div  className="flex flex-wrap justify-center items-center gap-2">
         <div  className="flex flex-wrap justify-center  items-center">
           <svg

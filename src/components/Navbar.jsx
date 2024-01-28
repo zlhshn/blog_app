@@ -8,6 +8,7 @@ import Switch from "./Switch";
 import Avatar from "../assets/icons/avatar.png";
 import { useSelector } from "react-redux";
 import useAuthCalls from "../service/useAuthCalls";
+import { toastWarn } from "../helper/ToastNotify";
 
 
 function classNames(...classes) {
@@ -21,7 +22,16 @@ export default function Example() {
 
   const navigation = [
     { name: "Home", to: "/", current: false },
-    { name: "NewBlog", to: "/newblog", current: false },
+    { 
+      name: "NewBlog", 
+      to: "/newblog", 
+      current: false ,
+      onclick: () => {
+        if (!user) {
+          toastWarn("You must login");
+        }
+      }
+    },
     { name: "About", to: "/about", current: false },
   ];
   
@@ -29,7 +39,7 @@ export default function Example() {
     { name: `${user.username}'s Blog`, to: "/myblog", current: false },
     { name: "Logout", current: false ,onclick:logout},
   ];
-  console.log(user);
+
 
   return (
     <Disclosure as="nav" className=" bg-main dark:bg-gray-900 ">
@@ -56,6 +66,7 @@ export default function Example() {
                       <NavLink
                         key={item.name}
                         to={item.to}
+                        onClick={() => item.onclick() || ""}
                         className={classNames(
                           item.current
                             ? "bg-gray-900 text-white"
@@ -78,7 +89,7 @@ export default function Example() {
                 </div>
 
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <Switch />
+                  {/* <Switch /> */}
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
@@ -105,10 +116,10 @@ export default function Example() {
                       <Menu.Items className=" absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none">
                         {user.username ? (
                           profileMenu.map((item) => (
-                            <Menu.Item>
+                            <Menu.Item  key={item.name}>
                               {({ active }) => (
                                 <NavLink
-                                  key={item.name}
+                                 
                                   to={item.to || ""}
                                   onClick={() => item.onclick() || ""}
                                   className={classNames(

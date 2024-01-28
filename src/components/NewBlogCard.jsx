@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Editor } from "primereact/editor";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
+import { toastSuccess } from "../helper/ToastNotify";
 
 const NewBlogCard = ({
   title: propTitle,
@@ -47,7 +48,7 @@ const NewBlogCard = ({
   };
 
   return (
-    <div className="flex flex-col gap-4 py-10 px-[2rem] md:px-[5rem] ">
+    <div className="flex flex-col gap-4 py-10 px-[2rem] md:px-[5rem]">
       <div>
         <label
           htmlFor="title"
@@ -104,7 +105,7 @@ const NewBlogCard = ({
             {" "}
             <option value="">Please select</option>
             {category.map((item) => (
-              <option value={item._id}>{item.name}</option>
+              <option key={item._id} value={item._id}>{item.name}</option>
             ))}
           </select>
         </div>
@@ -115,20 +116,26 @@ const NewBlogCard = ({
           onTextChange={handleEditorChange}
           name="content"
           required
-          style={{ height: "320px", outline:"none" }}
+          style={{ height: "320px", outline:"none", border:"none"}}
         />
       </div>
 
       <div className="">
         <button
           className="bg-[#86688a] px-3 py-1 rounded-md text-white m-2"
-          onClick={() => handleSubmit(false)}
+          onClick={() => {
+            handleSubmit(true);
+            toastSuccess("Blog Drafted Successfully");
+          }}
         >
           DRAFT
         </button>
         <button
           className="bg-[#86688a] px-3 py-1 rounded-md text-white "
-          onClick={() => handleSubmit(true)}
+          onClick={() => {
+            handleSubmit(true);
+            toastSuccess("Blog Published Successfully");
+          }}
         >
           PUBLİSHED
         </button>

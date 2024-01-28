@@ -7,23 +7,22 @@ import React, { useState } from "react";
 import { Paginator } from "primereact/paginator";
 import { Calendar } from "primereact/calendar";
 import { useNavigate } from "react-router-dom";
-import { FontStyle } from "quill";
-import { SizeClass } from "quill";
+import { all } from "axios";
 
 const Home = ({ showButton, setShowButton }) => {
   const { blogs, totalBlogs, category, news, allBlogs } = useSelector(
     (state) => state.blog
   );
+
   const { getBlog, getCategories, getNews, getAllBlogs } = useBlogCalls();
   const [date, setDate] = useState(new Date());
-
   const [first, setFirst] = useState(0);
   const [rows, setRows] = useState(3);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   const api_key = process.env.REACT_APP_NEWS_API_KEY;
-console.log(news);
+
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -35,7 +34,7 @@ console.log(news);
     getBlog(`blogs?page=${first / rows + 1}&limit=3&search[title]=${search}`);
     getCategories("categories");
     getAllBlogs("blogs");
-    getNews(`news?apiKey=${api_key}`);
+    getNews(`news?apiKey=${api_key}&country=tr`);
   }, [first, rows, search]);
 
  
@@ -53,7 +52,7 @@ console.log(news);
               id="Search"
               placeholder="Search..."
               value={search}
-              className="w-full bg-homeBg rounded-md border-gray-200 py-2.5  ps-2 pe-10 shadow-sm sm:text-sm"
+              className="w-full bg-homeBg rounded-md border border-[#578188]  outline-none py-2.5  ps-2 pe-10 shadow-md sm:text-sm"
               onChange={(e) => handleChange(e)}
             />
 
@@ -82,12 +81,12 @@ console.log(news);
           </div>
 
           <div className="bg-homeBg mt-2 p-2">
-            <p className="font-grace font-semibold text-2xl m-auto ">
+            <p className="font-grace font-semibold text-2xl m-auto tracking-wider text-center ">
               Categories
             </p>
 
             <p
-              className="border border-b-1 border-b-gray-400 font-grace text-xl "
+              className="border border-b-1 border-b-gray-400 font-grace tracking-wider text-2xl "
               onClick={() => getBlog(`blogs?page=${first / rows + 1}&limit=3`)}
             >
               All
@@ -95,7 +94,7 @@ console.log(news);
             {category.map((item) => (
               <p
                 key={item._id}
-                className="border border-b-1 border-b-gray-400 font-grace text-xl mt-2"
+                className="border border-b-1 border-b-gray-400 font-grace  mt-2 tracking-wider text-2xl"
                 onClick={() =>
                   getBlog(
                     `blogs?page=${
@@ -109,8 +108,8 @@ console.log(news);
             ))}
           </div>
 
-          <div className="bg-homeBg mt-2 p-2 hidden sm:block ">
-            <p className="font-grace font-extrabold mb-2 gap-2 text-center">
+          <div className="bg-homeBg mt-4 p-2 hidden sm:block ">
+            <p className="font-grace font-extrabold text-2xl mb-2 gap-2 text-center">
               Latest Posts
             </p>
             {allBlogs.slice(-3).map((item) => (
@@ -128,7 +127,7 @@ console.log(news);
                 </div>
                 <div className=" text-[15px] h-[30%] font-montserrat mt-2 flex-1">
                   <div className="w-full ">
-                    <p className="line-clamp-3">{item.content}</p>
+                    <p className="line-clamp-3"  dangerouslySetInnerHTML={{ __html: item.content }}></p>
                     <p className=" font-montserrat font-semibold  text-end mb-3">
                       {item.title}
                     </p>
@@ -159,30 +158,30 @@ console.log(news);
         </div>
 
         <div className="hidden lg:block lg:col-span-3 bg-homeBg p-1 mt-2 rounded-md ">
-
-            <div className="flex justify-center w-full">
-              <Calendar
+          <div className="flex justify-center w-full">
+            <Calendar
               value={date}
               onChange={(e) => setDate(e.value)}
               inline
-              style={{ padding: "1rem", overflowX: "hidden"}}
-
-             
+              style={{ padding: "1rem", overflowX: "hidden" }}
             />
-      
-            
           </div>
           <div className=" mt-8">
-            <h3 className="mx-3 text-center font-montserrat font-semibold text-2xl" >NEWS</h3>
-          <div className="grid grid-cols-12 gap-5">
-            {news.slice(0, 6).map((item, i) => (
-              <NewsCard key={i} item={item} />
-            ))}
+            <h3 className="mx-3 my-10 text-center font-grace tracking-wider font-semibold text-2xl">
+              MOST VİEWED BLOGS
+            </h3>
+            <div className="grid gap-8 ">
+              {allBlogs
+                .filter((item) => item.hasOwnProperty("countOfVisitors"))
+                .sort((a, b) => b.countOfVisitors - a.countOfVisitors)
+                .slice(0, 6)
+                .map((item) => (
+                  <div key={item._id}>
+                    <NewsCard item={item} />
+                  </div>
+                ))}
+            </div>
           </div>
-          </div>
-          
-
-          
         </div>
       </div>
     </div>
