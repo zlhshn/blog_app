@@ -7,7 +7,7 @@ Additionally, for ***UI/UX*** design, I utilized ***Prime React*** and ***Tailwi
 [LİVE](https://blog-app-zlhshn.vercel.app/)
 
 ## How does my project look
-![Blog_app]()
+![Blog_app](./blog.gif)
 
 ## Tech/framework used
 ***React.js*** : Created the project using the JavaScript framework React.React is a JavaScript library used for creating user interfaces. react-dom is used to render React applications in the browser. <br>
