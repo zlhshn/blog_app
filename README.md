@@ -1,7 +1,7 @@
 ## Project Description
 I developed the frontend of a blog app project using ***Create React App (CRA)***. The backend is written in Node.js.
 I implemented state management using ***Redux Toolkit.***
-Additionally, for ***UI/UX*** design, I utilized ***Prime React*** and ***Tailwind CSS.***"
+Additionally, for ***UI/UX*** design, I utilized ***Prime React*** and ***Tailwind CSS.***
 
 ## Project Lİnk
 [LİVE](https://blog-app-zlhshn.vercel.app/)
