@@ -1,10 +1,33 @@
-# Getting Started with Create React App
+## Project Description
+I developed the frontend of a blog app project using ***Create React App (CRA)***. The backend is written in Node.js.
+I implemented state management using ***Redux Toolkit.***
+Additionally, for ***UI/UX*** design, I utilized ***Prime React*** and ***Tailwind CSS.***"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Lİnk
+[LİVE](https://blog-app-zlhshn.vercel.app/)
 
-## Available Scripts
+## How does my project look
+![Blog_app]()
 
-In the project directory, you can run:
+## Tech/framework used
+**React.js** : Created the project using the JavaScript framework React.React is a JavaScript library used for creating user interfaces. react-dom is used to render React applications in the browser. <br>
+**Reduxjs/toolkit** : Redux Toolkit is a library that enables faster and more efficient use of Redux. It simplifies global state management using Redux.  <br>
+**React-redux**: React Redux is a library that facilitates the integration of React and Redux. It is used for global state management in React <br>
+**React-router-dom**: It is a library used for page navigation and route management in React applications<br>
+**Yup**:It is a schema-based validation library<br>
+**Formik**: It is used for form management.<br>
+**Axios**:It used for managing API requests and CRUD operations.<br>
+**Redux-persist**: Used to make the Redux store's state persistent. <br>
+**Postman**:It is used to control API requestsand CRUD operations. <br>
+**Redux DevTools**:It is used for the development and debugging of application based on Redux state management. <br>
+<br>
+<br>
+## UI/UX Components 
+**Primereact**:It is a React component library and used for UI components.<br>
+**Ouill**: It used for text editing features.<br>
+**React-toastify**:It has been used for users to track actions on the page.<br>
+**Headlessui/react**:Headless UI is a library that supports UI development.<br>
+**Heroicons/react**:Heroicons is an SVG icon library<br>
 
 ### `npm start`
 
@@ -29,42 +52,3 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
