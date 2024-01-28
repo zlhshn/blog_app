@@ -23,7 +23,7 @@ const Home = ({ showButton, setShowButton }) => {
   const navigate = useNavigate();
 
   const api_key = process.env.REACT_APP_NEWS_API_KEY;
-
+console.log(news);
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -34,10 +34,11 @@ const Home = ({ showButton, setShowButton }) => {
   useEffect(() => {
     getBlog(`blogs?page=${first / rows + 1}&limit=3&search[title]=${search}`);
     getCategories("categories");
-    getNews(`top-headlines?country=us&apiKey=${api_key}`);
     getAllBlogs("blogs");
+    getNews(`news?apiKey=${api_key}`);
   }, [first, rows, search]);
 
+ 
   return (
     <div className="mx-[.5rem]">
       <div className="grid grid-cols-12  gap-1">

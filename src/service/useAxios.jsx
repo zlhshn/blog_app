@@ -16,6 +16,7 @@ const useAxios = () => {
   const axiosNews=axios.create({
 
     baseURL: `${process.env.REACT_APP_NEWS_URL}`,
+
   })
 
   return { axiosPublic, axiosWithToken,axiosNews };

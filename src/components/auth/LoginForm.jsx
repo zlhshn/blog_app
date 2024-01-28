@@ -1,6 +1,7 @@
 import React from "react";
 import { Form } from "formik";
 import { object, string } from "yup";
+import { Link } from "react-router-dom";
 
 export const loginSchema = object({
     email: string()
@@ -85,6 +86,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           >
             Sign in
           </button>
+         
         </div>
       </div>
     </Form>

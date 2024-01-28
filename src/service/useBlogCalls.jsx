@@ -36,8 +36,8 @@ const getAllBlogs=async(url)=>{
   const getNews = async (url) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosNews(`/${url}`);
-      const apiData = data.articles
+      const { data } = await axiosNews.get(`${url}`);
+      const apiData = data.results
       dispatch(getNewsSuccess(apiData));
     } catch (error) {
       dispatch(fetchFail());

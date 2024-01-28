@@ -24,7 +24,7 @@ const Register = () => {
               image: "",
               city: "",
               bio: "",
-              password:""
+              password: "",
             }}
             validationSchema={registerSchema}
             onSubmit={(values, actions) => {
@@ -44,6 +44,14 @@ const Register = () => {
               SIGN IN
             </NavLink>
           </p>
+        </div>
+        <div className="text-center my-3">
+          <NavLink
+            to="/"
+            className="my-10 font-semibold  text-md text-gray-500 hover:text-main"
+          >
+            {` >>Home`}
+          </NavLink>
         </div>
       </div>
 
