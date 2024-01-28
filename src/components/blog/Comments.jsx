@@ -1,6 +1,4 @@
 
-import avatar from "../../assets/icons/avatar.png"
-
 const Comments = ({ item }) => {
   const { createdAt, userId, comment } = item;
 

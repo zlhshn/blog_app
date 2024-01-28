@@ -1,6 +1,5 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef} from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import NewBlogCard from "./NewBlogCard";
 
 export default function Modal({

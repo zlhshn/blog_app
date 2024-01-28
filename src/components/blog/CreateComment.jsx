@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useBlogCalls from "../../service/useBlogCalls";
 import { useSelector } from "react-redux";
-import { toastWarn } from "../../helper/ToastNotify";
+
 
 const CreateComment = ({ _id }) => {
   const { postComment } = useBlogCalls();
@@ -36,13 +36,7 @@ const CreateComment = ({ _id }) => {
           ></textarea>
 
           <div className="flex items-center justify-end gap-2 bg-white p-3">
-            {/* <button
-              type="button"
-              className="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600"
-            >
-              Clear
-            </button> */}
-
+          
             <button
               type="submit"
               onClick={handleSubmit}

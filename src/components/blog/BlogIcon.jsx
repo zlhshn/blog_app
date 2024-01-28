@@ -7,7 +7,7 @@ import useBlogCalls from "../../service/useBlogCalls";
 
 const BlogIcon = ({ _id, likes, comments, countOfVisitors, first, rows }) => {
   const { user } = useSelector((state) => state.auth);
-  const { postLike, getBlog } = useBlogCalls();
+  const { postLike} = useBlogCalls();
 
   return (
     <div className="flex flex-row gap-2">

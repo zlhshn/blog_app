@@ -6,10 +6,7 @@ import {
   getDetailSucces,
   getCategorySuccess,
   getUserBlogSuccess,
-  getfilterSuccess,
-  getSearchSuccess,
-  getNewsSuccess,
-  getAllBlogSuccess
+  getAllBlogSuccess,
 } from "../features/blogSlice";
 
 import { useDispatch } from "react-redux";
@@ -17,28 +14,14 @@ import useAxios from "./useAxios";
 
 const useBlogCalls = () => {
   const dispatch = useDispatch();
-  const { axiosPublic, axiosWithToken, axiosNews } = useAxios();
+  const { axiosPublic, axiosWithToken} = useAxios();
 
-const getAllBlogs=async(url)=>{
-  dispatch(fetchStart());
-  try {
-    const { data } = await axiosPublic(`/${url}`);
-    const apiData = data.data
-    dispatch(getAllBlogSuccess(apiData));
-  } catch (error) {
-    dispatch(fetchFail());
-    console.log(error);
-  }
-
-}
-
-
-  const getNews = async (url) => {
+  const getAllBlogs = async (url) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosNews.get(`${url}`);
-      const apiData = data.results
-      dispatch(getNewsSuccess(apiData));
+      const { data } = await axiosPublic(`/${url}`);
+      const apiData = data.data;
+      dispatch(getAllBlogSuccess(apiData));
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -52,31 +35,6 @@ const getAllBlogs=async(url)=>{
       const apiData = data.data;
       const totalRecords = data.details.totalRecords;
       dispatch(getBlogSuccess({ apiData, totalRecords }));
-    } catch (error) {
-      dispatch(fetchFail());
-      console.log(error);
-    }
-  };
-
-  const filterBlog = async (url, id) => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axiosPublic(`/${url}/?filter[categoryId]=${id}`);
-      const apiData = data.data;
-      const totalRecords = data.details.totalRecords;
-      dispatch(getfilterSuccess({ apiData, totalRecords }));
-    } catch (error) {
-      dispatch(fetchFail());
-      console.log(error);
-    }
-  };
-  const searchBlog = async (url, value) => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axiosPublic(`/${url}/?search[content]=${value}`);
-      const apiData = data.data;
-      const totalRecords = data.details.totalRecords;
-      dispatch(getSearchSuccess({ apiData, totalRecords }));
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -179,10 +137,7 @@ const getAllBlogs=async(url)=>{
     getUserBlog,
     putBlog,
     deleteBlog,
-    filterBlog,
-    searchBlog,
-    getNews,
-    getAllBlogs
+    getAllBlogs,
   };
 };
 

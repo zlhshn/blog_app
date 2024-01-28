@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
-import BlogIcon from "../components/blog/BlogIcon";
 import Comments from "../components/blog/Comments";
 import CreateComment from "../components/blog/CreateComment";
-import NewBlogCard from "../components/NewBlogCard";
 import Modal from "../components/Modal";
 import { toastSuccess } from "../helper/ToastNotify";
-import avatar from "../../src/assets/icons/avatar.png";
+
 
 const Detail = () => {
   const { id } = useParams();
@@ -24,10 +22,8 @@ const Detail = () => {
     image,
     title,
     content,
-    countOfVisitors,
     userId,
     _id,
-    likes,
     categoryId,
   } = detail;
 
@@ -77,14 +73,7 @@ const Detail = () => {
           dangerouslySetInnerHTML={{ __html: content }}
         ></div>
 
-        {/* <div className="flex ">
-          <BlogIcon
-            likes={likes}
-            comments={comments}
-            countOfVisitors={countOfVisitors}
-            _id={_id}
-          />
-        </div> */}
+    
         {userId?._id === user?._id && (
           <div className="mt-10">
             <button

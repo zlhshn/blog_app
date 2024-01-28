@@ -4,7 +4,6 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/image/logo1.png";
 import { NavLink } from "react-router-dom";
-import Switch from "./Switch";
 import Avatar from "../assets/icons/avatar.png";
 import { useSelector } from "react-redux";
 import useAuthCalls from "../service/useAuthCalls";

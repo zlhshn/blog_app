@@ -7,21 +7,21 @@ import React, { useState } from "react";
 import { Paginator } from "primereact/paginator";
 import { Calendar } from "primereact/calendar";
 import { useNavigate } from "react-router-dom";
-import { all } from "axios";
 
-const Home = ({ showButton, setShowButton }) => {
-  const { blogs, totalBlogs, category, news, allBlogs } = useSelector(
+
+const Home = () => {
+  const { blogs, totalBlogs, category,  allBlogs } = useSelector(
     (state) => state.blog
   );
 
-  const { getBlog, getCategories, getNews, getAllBlogs } = useBlogCalls();
+  const { getBlog, getCategories, getAllBlogs } = useBlogCalls();
   const [date, setDate] = useState(new Date());
   const [first, setFirst] = useState(0);
   const [rows, setRows] = useState(3);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  const api_key = process.env.REACT_APP_NEWS_API_KEY;
+
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -34,7 +34,6 @@ const Home = ({ showButton, setShowButton }) => {
     getBlog(`blogs?page=${first / rows + 1}&limit=3&search[title]=${search}`);
     getCategories("categories");
     getAllBlogs("blogs");
-    getNews(`news?apiKey=${api_key}&country=tr`);
   }, [first, rows, search]);
 
  
