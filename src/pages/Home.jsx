@@ -39,7 +39,7 @@ const Home = ({ showButton, setShowButton }) => {
 
  
   return (
-    <div className="mx-[.5rem]">
+    <div className="mx-[.5rem] ">
       <div className="grid grid-cols-12  gap-1">
         <div className="col-span-12 sm:col-span-3  lg:col-span-2 p-2 rounded-md bg-homeBg mt-2  ">
           <div className="relative bg-homeBg">
@@ -138,7 +138,7 @@ const Home = ({ showButton, setShowButton }) => {
           </div>
         </div>
 
-        <div className="col-span-12 sm:col-span-9 lg:col-span-7 bg-[#daece8]  mt-2  rounded-md relative ">
+        <div className="col-span-12 sm:col-span-9 lg:col-span-7 bg-[#daece8]  mt-2  rounded-md relative min-h-[85vh]">
           <div className="grid grid-cols-12 gap-2 mb-40">
             {blogs.map((blog) => (
               <BlogCard key={blog._id} blog={blog} first={first} rows={rows} />

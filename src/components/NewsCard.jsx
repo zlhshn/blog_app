@@ -14,7 +14,7 @@ const NewsCard = ({ item }) => {
         <img
           src={image || ""}
           alt="newsImage"
-          className="h-[100px] w-[300px] rounded-md"
+          className="h-[100px] w-[300px] rounded-md cursor-pointer"
         />
       </div>
       <div className="line-clamp-3 flex-grow w-[60%] mb-3">{title}</div>
