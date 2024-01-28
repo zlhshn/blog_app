@@ -6,8 +6,8 @@ import { NavLink } from "react-router-dom";
 const Register = () => {
   const { register } = useAuthCalls();
   return (
-    <div className="relative h-[100vh] flex justify-center items-center bg-[#175c51d8]">
-      <div className="flex flex-col justify-center w-[70%] sm:w-[40%] rounded-2xl px-5 shadow-lg me-[5vh] bg-[#c0dbd4]">
+    <div className="relative sm:h-[100vh] py-12 flex justify-center items-center bg-[#175c51d8]">
+      <div className="flex flex-col justify-center my-20  w-[70%] sm:w-[50%] md:w-[40%] lg:w-[30%] rounded-2xl px-5  shadow-lg   bg-[#c0dbd4]">
         <div className="sm:mx-auto sm:w-full sm:max-w-lg">
           <h2 className="mt-10 text-center text-2xl font-bold leading-3 tracking-tight text-text-[#00323B]">
             SIGN UP

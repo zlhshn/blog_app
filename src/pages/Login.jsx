@@ -14,11 +14,11 @@ export default function Login() {
   return (
     <>
       <div className=" bg-primary">
-        <div className="flex  h-[100vh] flex-row justify-center items-center ">
+        <div className="flex  h-[100vh] flex-row justify-between items-center ">
           <div className=" ">
-            <img src={loginImg} alt="" className="h-[100vh] w-[100%]" />
+            <img src={loginImg} alt="" className="hidden sm:block h-[100vh] w-[100%]" />
           </div>
-          <div className="flex flex-col justify-center w-[70%] sm:w-[40%] h-[50%]  bg-secondary rounded-2xl px-5 shadow-lg me-[5vh]">
+          <div className="flex flex-col justify-center w-[90%] sm:w-[75%] sm:h-[50%] md:w-[60%] lg:w-[30%] bg-secondary rounded-2xl px-5 lg:px-10 shadow-lg mx-[5vh]">
             <div className="sm:mx-auto sm:w-full sm:max-w-lg">
               <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-text-main">
                 SIGN IN
@@ -40,7 +40,7 @@ export default function Login() {
               </Formik>
               </div>
               
-              <p className="mt-10 text-center text-md text-gray-500">
+              <p className="my-10 text-center text-md text-gray-500">
                 Not a member?
                 <Link
                   to={"/register"}
