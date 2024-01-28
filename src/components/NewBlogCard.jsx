@@ -124,7 +124,7 @@ const NewBlogCard = ({
         <button
           className="bg-[#86688a] px-3 py-1 rounded-md text-white m-2"
           onClick={() => {
-            handleSubmit(true);
+            handleSubmit(false);
             toastSuccess("Blog Drafted Successfully");
           }}
         >
