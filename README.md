@@ -10,45 +10,44 @@ Additionally, for ***UI/UX*** design, I utilized ***Prime React*** and ***Tailwi
 ![Blog_app]()
 
 ## Tech/framework used
-**React.js** : Created the project using the JavaScript framework React.React is a JavaScript library used for creating user interfaces. react-dom is used to render React applications in the browser. <br>
-**Reduxjs/toolkit** : Redux Toolkit is a library that enables faster and more efficient use of Redux. It simplifies global state management using Redux.  <br>
-**React-redux**: React Redux is a library that facilitates the integration of React and Redux. It is used for global state management in React <br>
-**React-router-dom**: It is a library used for page navigation and route management in React applications<br>
-**Yup**:It is a schema-based validation library<br>
-**Formik**: It is used for form management.<br>
-**Axios**:It used for managing API requests and CRUD operations.<br>
-**Redux-persist**: Used to make the Redux store's state persistent. <br>
-**Postman**:It is used to control API requestsand CRUD operations. <br>
-**Redux DevTools**:It is used for the development and debugging of application based on Redux state management. <br>
+***React.js*** : Created the project using the JavaScript framework React.React is a JavaScript library used for creating user interfaces. react-dom is used to render React applications in the browser. <br>
+***Reduxjs/toolkit*** : Redux Toolkit is a library that enables faster and more efficient use of Redux. It simplifies global state management using Redux.  <br>
+***React-redux***: React Redux is a library that facilitates the integration of React and Redux. It is used for global state management in React <br>
+***React-router-dom***: It is a library used for page navigation and route management in React applications<br>
+***Yup***:It is a schema-based validation library<br>
+***Formik***: It is used for form management.<br>
+***Axios***:It used for managing API requests and CRUD operations.<br>
+***Redux-persist***: Used to make the Redux store's state persistent. <br>
+***Postman***:It is used to control API requestsand CRUD operations. <br>
+***Redux DevTools***:It is used for the development and debugging of application based on Redux state management. <br>
 <br>
 <br>
 ## UI/UX Components 
-**Primereact**:It is a React component library and used for UI components.<br>
-**Ouill**: It used for text editing features.<br>
-**React-toastify**:It has been used for users to track actions on the page.<br>
-**Headlessui/react**:Headless UI is a library that supports UI development.<br>
-**Heroicons/react**:Heroicons is an SVG icon library<br>
+***Prime React***: It is a React component library and used for UI components.<br>
+***Ouill***: It used for text editing features.<br>
+***React-toastify***:It has been used for users to track actions on the page.<br>
+***Headlessui/react***:Headless UI is a library that supports UI development.<br>
+***Heroicons/react***:Heroicons is an SVG icon library<br>
+***Tailwind CSS***:It is a CSS framework for web projects, designed to facilitate the rapid and efficient creation of customizable.<br>
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
+📝 Users can view and read the blogs on the page without logging in.<br>
+📝 They can filter blogs by category. <br>
+📝 Search based on the content of the blogs.<br>
+📝 If user want to write a blog, they should either register or log in.<br>
+📝 After completing the login process, they can write, edit, and delete blogs.<br>
+
+## API Reference
+https://36150.fullstack.clarusway.com/
+
+
+### How to install and run
+`npm install` and `npm start`<br>
+Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
