@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import React, { useState } from "react";
 import { Paginator } from "primereact/paginator";
 import { Calendar } from "primereact/calendar";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 
 const Home = () => {
@@ -91,9 +91,9 @@ const Home = () => {
               All
             </p>
             {category.map((item) => (
-              <p
+              <NavLink
                 key={item._id}
-                className="border border-b-1 border-b-gray-400 font-grace  mt-2 tracking-wider text-2xl"
+                className="block border border-b-1 border-b-gray-400 font-grace  mt-2 tracking-wider text-2xl active:"
                 onClick={() =>
                   getBlog(
                     `blogs?page=${
@@ -103,7 +103,7 @@ const Home = () => {
                 }
               >
                 {item.name}
-              </p>
+              </NavLink>
             ))}
           </div>
 

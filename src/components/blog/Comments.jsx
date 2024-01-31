@@ -15,7 +15,7 @@ const Comments = ({ item }) => {
           </h5>
         </div>
       </div>
-      <p>{comment}</p>
+      <p className="mb-2">{comment}</p>
     </div>
   );
 };

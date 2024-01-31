@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/image/logo1.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Avatar from "../assets/icons/avatar.png";
 import { useSelector } from "react-redux";
 import useAuthCalls from "../service/useAuthCalls";
@@ -17,25 +17,27 @@ function classNames(...classes) {
 export default function Example() {
   const { user } = useSelector((state) => state.auth);
   const {logout}=useAuthCalls()
-
+const navigate=useNavigate()
 
   const navigation = [
-    { name: "Home", to: "/", current: false },
+    { name: "Home",  onclick: () => {navigate("/")} },
     { 
       name: "NewBlog", 
-      to: "/newblog", 
+     
       current: false ,
       onclick: () => {
         if (!user) {
           toastWarn("You must login");
+        }else {
+          navigate("/newblog")
         }
       }
     },
-    { name: "About", to: "/about", current: false },
+    { name: "About",onclick: () => {navigate("/about")} },
   ];
   
   const profileMenu = [
-    { name: `${user.username}'s Blog`, to: "/myblog", current: false },
+    { name: `${user.username}'s Blog`, to: "/myblog"},
     { name: "Logout", current: false ,onclick:logout},
   ];
 
@@ -62,9 +64,8 @@ export default function Example() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex items-center space-x-4">
                     {navigation.map((item) => (
-                      <NavLink
+                      <button
                         key={item.name}
-                        to={item.to}
                         onClick={() => item.onclick() || ""}
                         className={classNames(
                           item.current
@@ -75,7 +76,7 @@ export default function Example() {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </NavLink>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -120,7 +121,7 @@ export default function Example() {
                                 <NavLink
                                  
                                   to={item.to || ""}
-                                  onClick={() => item.onclick() || ""}
+                                  onClick={() => item.onclick() }
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700"

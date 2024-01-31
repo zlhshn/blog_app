@@ -3,6 +3,7 @@ import { Editor } from "primereact/editor";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
 import { toastSuccess } from "../helper/ToastNotify";
+import { useNavigate } from "react-router-dom";
 
 const NewBlogCard = ({
   title: propTitle,
@@ -13,7 +14,7 @@ const NewBlogCard = ({
 }) => {
   const { postBlog, getCategories, putBlog } = useBlogCalls();
   const { category } = useSelector((state) => state.blog);
-
+  const navigate = useNavigate();
   const [text, setText] = useState("");
   const blogInfo = {
     title: propTitle || "",
@@ -39,12 +40,12 @@ const NewBlogCard = ({
 
   const handleSubmit = (isPublish) => {
     if (_id) {
-      putBlog("blogs", _id,{ ...data, isPublish });
-  
+      putBlog("blogs", _id, { ...data, isPublish });
     } else {
       postBlog("blogs", { ...data, isPublish });
-
     }
+    setData(blogInfo);
+    setText("");
   };
 
   return (
@@ -57,15 +58,13 @@ const NewBlogCard = ({
           <input
             type="text"
             id="title"
-            className=" peer border-none bg-white placeholder-gray focus:border-transparent focus:outline-none focus:ring-0 "
+            className=" peer border-none bg-white placeholder-gray focus:border-transparent focus:outline-none focus:ring-0 w-full "
             placeholder="Title"
             required
             onChange={handleChange}
             value={data.title || ""}
             name="title"
           />
-
-         
         </label>
       </div>
       <div>
@@ -76,15 +75,13 @@ const NewBlogCard = ({
           <input
             type="url"
             id="image"
-            className="peer border-none bg-white bg-transparent placeholder-gray focus:border-transparent focus:outline-none focus:ring-0"
+            className="peer border-none bg-white bg-transparent placeholder-gray focus:border-transparent w-full focus:outline-none focus:ring-0"
             placeholder="Image Url"
             onChange={handleChange}
             required
             value={data.image || ""}
             name="image"
           />
-
-       
         </label>
       </div>
       <div>
@@ -105,18 +102,20 @@ const NewBlogCard = ({
             {" "}
             <option value="">Please select</option>
             {category.map((item) => (
-              <option key={item._id} value={item._id}>{item.name}</option>
+              <option key={item._id} value={item._id}>
+                {item.name}
+              </option>
             ))}
           </select>
         </div>
       </div>
       <div className="card">
         <Editor
-          value={text || data.content || "" }
+          value={text || data.content || ""}
           onTextChange={handleEditorChange}
           name="content"
           required
-          style={{ height: "320px", outline:"none", border:"none"}}
+          style={{ height: "320px", outline: "none", border: "none" }}
         />
       </div>
 
@@ -126,6 +125,7 @@ const NewBlogCard = ({
           onClick={() => {
             handleSubmit(false);
             toastSuccess("Blog Drafted Successfully");
+            navigate("/myblog");
           }}
         >
           DRAFT
@@ -135,6 +135,7 @@ const NewBlogCard = ({
           onClick={() => {
             handleSubmit(true);
             toastSuccess("Blog Published Successfully");
+            navigate("/");
           }}
         >
           PUBLİSHED

@@ -7,7 +7,6 @@ import CreateComment from "../components/blog/CreateComment";
 import Modal from "../components/Modal";
 import { toastSuccess } from "../helper/ToastNotify";
 
-
 const Detail = () => {
   const { id } = useParams();
   const { detail } = useSelector((state) => state.blog);
@@ -64,16 +63,15 @@ const Detail = () => {
             </h3>
           </p>
         </div>
-        <div className="text-center font-vibes m-7 text-xl font-semibold ">
+        <div className="text-center  m-7 text-xl  font-bold">
           {title}
         </div>
 
         <div
-          className="text-justify font-badScript my-5"
+          className="text-justify font-sans my-5"
           dangerouslySetInnerHTML={{ __html: content }}
         ></div>
 
-    
         {userId?._id === user?._id && (
           <div className="mt-10">
             <button
@@ -106,7 +104,6 @@ const Detail = () => {
             <div className="flex flex-col gap-6">
               {comments?.map((item) => (
                 <div key={item._id}>
-            
                   <Comments item={item} />
                 </div>
               ))}

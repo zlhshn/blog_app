@@ -36,8 +36,8 @@ const BlogCard = ({ blog, first, rows }) => {
               ></p>
               <div>
                 <p className="font-badScript text-md mt-6 mb-20 text-[#793c81]">
-                  <span> {user && isPublish && "Published:"}</span>
-                  <span>{user && !isPublish && "Drafted"}</span>
+                  <span> {user && isPublish && "Published: "}</span>
+                  <span>{user && !isPublish && "Drafted : "}</span>
                   <span className="font-dancing">
                     {new Date(createdAt).toLocaleString("en-US", {
                       year: "numeric",
