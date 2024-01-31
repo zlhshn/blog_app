@@ -93,7 +93,7 @@ const Home = () => {
             {category.map((item) => (
               <NavLink
                 key={item._id}
-                className="block border border-b-1 border-b-gray-400 font-grace  mt-2 tracking-wider text-2xl active:"
+                className="block border border-b-1 border-b-gray-400 font-grace  mt-2 tracking-wider text-2xl"
                 onClick={() =>
                   getBlog(
                     `blogs?page=${
