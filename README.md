@@ -3,7 +3,7 @@ I developed the frontend of a blog app project using ***Create React App (CRA)**
 I implemented state management using ***Redux Toolkit.***
 Additionally, for ***UI/UX*** design, I utilized ***Prime React*** and ***Tailwind CSS.***
 
-## Project Lİnk
+## Project Link
 [LİVE](https://blog-app-zlhshn.vercel.app/)
 
 ## How does my project look
